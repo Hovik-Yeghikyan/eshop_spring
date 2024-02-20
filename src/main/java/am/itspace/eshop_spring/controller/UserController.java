@@ -6,6 +6,9 @@ import am.itspace.eshop_spring.security.SpringUser;
 import am.itspace.eshop_spring.service.CategoryService;
 import am.itspace.eshop_spring.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +22,7 @@ import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
 
@@ -27,6 +31,7 @@ public class UserController {
     private final CategoryService categoryService;
 
     private final PasswordEncoder passwordEncoder;
+
 
     @GetMapping("/user/register")
     public String userRegisterPage(@RequestParam(value = "msg", required = false) String msg, ModelMap modelMap) {
@@ -43,8 +48,10 @@ public class UserController {
             user.setUserType(UserType.USER);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userService.save(user);
+            log.info("User with {} email registered successfully", user.getEmail());
             return "redirect:/user/register?msg=User Registered";
         } else {
+            log.info("User with {} email already registered", user.getEmail());
             return "redirect:/user/register?msg=Email already in use";
         }
     }
@@ -62,6 +69,7 @@ public class UserController {
     public String loginSuccess(@AuthenticationPrincipal SpringUser springUser) {
         User user = springUser.getUser();
         if (user.getUserType() == UserType.ADMIN) {
+            log.info("user {} logged in", user.getEmail());
             return "redirect:/admin/home";
         } else{
             return "redirect:/";

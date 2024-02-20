@@ -75,12 +75,13 @@
                         <a class="gi-help" href="track-order.html">Track Order?</a>
                         <!-- Language Start -->
                         <div class="header-top-lan-curr header-top-lan dropdown">
-                            <button class="dropdown-toggle" data-bs-toggle="dropdown">English
+                            <button class="dropdown-toggle" data-bs-toggle="dropdown">Lang
                                 <i class="fi-rr-angle-small-down" aria-hidden="true"></i>
                             </button>
                             <ul class="dropdown-menu">
-                                <li class="active"><a class="dropdown-item" href="register.html#">English</a></li>
-                                <li><a class="dropdown-item" href="register.html#">Italiano</a></li>
+                                <li><a class="dropdown-item" href="?lang=en">English</a></li>
+                                <li><a class="dropdown-item" href="?lang=hy">Հայերեն</a></li>
+                                <li><a class="dropdown-item" href="?lang=ru">Русский</a></li>
                             </ul>
                         </div>
                         <!-- Language End -->
@@ -213,7 +214,6 @@
     <!-- Header Button End -->
 
 
-
 </header>
 <!-- Header End  -->
 
@@ -323,7 +323,7 @@
 <section class="gi-register padding-tb-40">
     <div class="container">
         <div class="section-title-2">
-            <h2 class="gi-title">Register<span></span></h2>
+            <h2 class="gi-title" th:text="#{register.register}">Register<span></span></h2>
             <p style="color: red" th:text="${msg}"></p>
         </div>
         <div class="row">
@@ -332,19 +332,19 @@
                     <div class="gi-register-form">
                         <form action="/user/register" method="post">
                                 <span class="gi-register-wrap gi-register-half">
-                                    <label>First Name*</label>
+                                    <label th:text="#{register.first.name}">First Name*</label>
                                     <input type="text" name="name" placeholder="Enter your first name" required>
                                 </span>
                             <span class="gi-register-wrap gi-register-half">
-                                    <label>Last Name*</label>
+                                    <label th:text="#{register.last.name}">Last Name*</label>
                                     <input type="text" name="surname" placeholder="Enter your last name" required>
                                 </span>
                             <span class="gi-register-wrap gi-register-half">
-                                    <label>Email*</label>
+                                    <label th:text="#{register.email}">Email*</label>
                                     <input type="email" name="email" placeholder="Enter your email add..." required>
                                 </span>
                             <span class="gi-register-wrap gi-register-half">
-                                    <label>Password *</label>
+                                    <label th:text="#{register.password}">Password *</label>
                                     <input type="password" name="password" placeholder="Enter your password"
                                            required>
                                 </span>
@@ -375,9 +375,11 @@
                                 daily
                                 needs from our store.</p>
                             <div class="gi-app-store">
-                                <a href="register.html#" class="app-img"><img src="/user/img/app/android.png" class="adroid"
+                                <a href="register.html#" class="app-img"><img src="/user/img/app/android.png"
+                                                                              class="adroid"
                                                                               alt="apple"></a>
-                                <a href="register.html#" class="app-img"><img src="/user/img/app/apple.png" class="apple"
+                                <a href="register.html#" class="app-img"><img src="/user/img/app/apple.png"
+                                                                              class="apple"
                                                                               alt="apple"></a>
                             </div>
                         </div>
@@ -466,13 +468,17 @@
                                 <div class="gi-footer-links gi-footer-dropdown">
                                     <ul class="align-itegi-center">
                                         <li class="gi-footer-link"><a href="register.html#"><i class="gicon gi-facebook"
-                                                                                               aria-hidden="true"></i></a></li>
+                                                                                               aria-hidden="true"></i></a>
+                                        </li>
                                         <li class="gi-footer-link"><a href="register.html#"><i class="gicon gi-twitter"
-                                                                                               aria-hidden="true"></i></a></li>
+                                                                                               aria-hidden="true"></i></a>
+                                        </li>
                                         <li class="gi-footer-link"><a href="register.html#"><i class="gicon gi-linkedin"
-                                                                                               aria-hidden="true"></i></a></li>
-                                        <li class="gi-footer-link"><a href="register.html#"><i class="gicon gi-instagram"
-                                                                                               aria-hidden="true"></i></a></li>
+                                                                                               aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="gi-footer-link"><a href="register.html#"><i
+                                                class="gicon gi-instagram"
+                                                aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -490,7 +496,8 @@
                             <div class="footer-bottom-copy ">
                                 <div class="gi-copy">Copyright © <a class="site-name" href="index.html">Grabit</a>
                                     all
-                                    rights reserved. Powered by Grabit.</div>
+                                    rights reserved. Powered by Grabit.
+                                </div>
                             </div>
                         </div>
                         <!-- Footer Copyright End -->
@@ -544,7 +551,8 @@
 
                             <div class="gi-quickview-desc">Lorem Ipsum is simply dummy text of the printing and
                                 typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                since the 1900s,</div>
+                                since the 1900s,
+                            </div>
                             <div class="gi-quickview-price">
                                 <span class="new-price">$50.00</span>
                                 <span class="old-price">$62.00</span>
@@ -572,7 +580,8 @@
                                 </div>
                                 <div class="gi-quickview-cart ">
                                     <button class="gi-btn-1"><i class="fi-rr-shopping-basket"></i> Add To
-                                        Cart</button>
+                                        Cart
+                                    </button>
                                 </div>
                             </div>
                         </div>
