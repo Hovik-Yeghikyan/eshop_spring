@@ -16,7 +16,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-
+@Controller
 @RequiredArgsConstructor
 public class MainController {
     @Value("${picture.upload.directory}")
