@@ -17,4 +17,6 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserType userType;
+    private boolean active;
+    private String token;
 }

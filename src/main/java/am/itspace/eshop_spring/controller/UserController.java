@@ -5,6 +5,7 @@ import am.itspace.eshop_spring.entity.UserType;
 import am.itspace.eshop_spring.security.SpringUser;
 import am.itspace.eshop_spring.service.CategoryService;
 import am.itspace.eshop_spring.service.UserService;
+import am.itspace.eshop_spring.service.impl.SendMailService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -47,7 +48,7 @@ public class UserController {
         if (byEmail == null) {
             user.setUserType(UserType.USER);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userService.save(user);
+            userService.register(user);
             log.info("User with {} email registered successfully", user.getEmail());
             return "redirect:/user/register?msg=User Registered";
         } else {
@@ -71,8 +72,25 @@ public class UserController {
         if (user.getUserType() == UserType.ADMIN) {
             log.info("user {} logged in", user.getEmail());
             return "redirect:/admin/home";
-        } else{
+        } else {
             return "redirect:/";
         }
+    }
+
+    @GetMapping("/user/verify")
+    public String verifyUser(@RequestParam("token") String token) {
+        User byToken = userService.findByToken(token);
+        if (byToken == null) {
+            return "redirect:/";
+        }
+        if (byToken.isActive()) {
+            log.error("user already active! {}", byToken.getEmail());
+        }
+
+        byToken.setActive(true);
+        byToken.setToken(null);
+        userService.save(byToken);
+
+        return "redirect:/";
     }
 }

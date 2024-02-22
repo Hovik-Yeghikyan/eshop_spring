@@ -7,7 +7,9 @@ public class SpringUser extends User {
     private am.itspace.eshop_spring.entity.User user;
 
     public SpringUser(am.itspace.eshop_spring.entity.User user) {
-        super(user.getEmail(), user.getPassword(), AuthorityUtils.createAuthorityList(user.getUserType().name()));
+        super(user.getEmail(), user.getPassword(),
+                user.isActive(),true,true,true,
+                AuthorityUtils.createAuthorityList(user.getUserType().name()));
         this.user = user;
     }
 
