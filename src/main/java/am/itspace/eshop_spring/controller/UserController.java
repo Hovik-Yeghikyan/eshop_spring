@@ -42,6 +42,7 @@ public class UserController {
         return "register";
     }
 
+
     @PostMapping("/user/register")
     public String userRegister(@ModelAttribute User user) {
         User byEmail = userService.findByEmail(user.getEmail());
