@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/eshop_spring
+    username: root
+    password: root
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: javafortest2024@gmail.com
+    password: rqinchnngheeexum
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath*:db/change-log.xml
+server:
+  port: 8081
+
+logging:
+  level:
+    root: info
+    am.itspace: debug
+  file:
+    name: C:\\Users\\DELL\\IdeaProjects\\eshop_spring\\logs\\eshop-%d{yyyy-MM-dd-HH-mm-ss}.%i.log
+  logback:
+    rollingpolicy:
+      max-file-size: 1MB
+eshop:
+ picture:
+   upload:
+     directory: C:\\Users\\DELL\\IdeaProjects\\eshop_spring\\uploadDirectory

@@ -19,4 +19,5 @@ public class User {
     private UserType userType;
     private boolean active;
     private String token;
+    private String pic_url;
 }
